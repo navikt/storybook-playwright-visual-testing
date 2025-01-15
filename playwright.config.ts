@@ -11,7 +11,7 @@ export default defineConfig({
   reporter: process.env.CI ? "html" : "dot",
   // ...
   use: {
-    baseURL: BASE_URL,
+    baseURL: "http://127.0.0.1:8080",
     // ...
   },
   // I recommend to run regression tests at
@@ -32,8 +32,8 @@ export default defineConfig({
   webServer: process.env.CI
     ? undefined
     : {
-        command: "npm run storybook",
-        url: BASE_URL,
-        reuseExistingServer: true,
+        command: "npx http-server ./storybook-static",
+        url: "http://127.0.0.1:8080",
+        reuseExistingServer: !process.env.CI,
       },
 });
