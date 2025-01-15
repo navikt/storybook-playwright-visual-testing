@@ -36,7 +36,7 @@ jobs:
       - name: Commit and push updated snapshots
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update e2e snapshots"
+          commit_message: "Update playwright snapshots"
       - name: Comment success
         uses: thollander/actions-comment-pull-request@v3
         with:
