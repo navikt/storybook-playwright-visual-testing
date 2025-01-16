@@ -23,7 +23,7 @@ jobs:
       - run: npm run build-storybook
       - name: Run Playwright tests
         run: |
-          npx playwright test | tee output.log
+          docker run --rm -v $(pwd):/workspace -w /workspace --ipc=host mcr.microsoft.com/playwright:v1.49.1-noble /bin/bash -c "npx playwright test" | tee output.log
           if grep -q -e "Error: A snapshot doesn't exist at" -e "Screenshot comparison failed" output.log; then
             echo "Playwright tests failed due to a snapshot issue."
             echo "SNAPSHOT_DIFFERENCES=true" >> $GITHUB_ENV
