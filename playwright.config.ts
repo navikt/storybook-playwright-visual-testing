@@ -3,7 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 const port = 4243;
 
 export default defineConfig({
-  reporter: process.env.CI ? "html" : "dot",
+  reporter: "html",
 
   use: {
     baseURL: `http://localhost:${port}`,
@@ -25,6 +25,5 @@ export default defineConfig({
     port,
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
-    stdout: "pipe",
   },
 });

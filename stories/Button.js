@@ -13,8 +13,8 @@ export const createButton = ({
   btn.addEventListener("click", onClick);
 
   const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
+    ? "storybook-button--secondary"
+    : "storybook-button--primary";
   btn.className = ["storybook-button", `storybook-button--${size}`, mode].join(
     " "
   );
