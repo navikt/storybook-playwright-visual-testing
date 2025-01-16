@@ -32,7 +32,7 @@ jobs:
         run: npx playwright install --with-deps
       - run: npm run build-storybook
       - name: Run Playwright update snapshots
-        run: docker run --rm -v $(pwd):/workspace -w /workspace --ipc=host mcr.microsoft.com/playwright:v1.49.1-noble /bin/bash -c "npx playwright test --update-snapshots"
+        run: docker run --rm -v $(pwd):/workspace -w /workspace --ipc=host mcr.microsoft.com/playwright:v1.49.1-noble /bin/bash -c "CI=true npx playwright test --update-snapshots"
       - name: Commit and push updated snapshots
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
