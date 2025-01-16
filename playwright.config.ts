@@ -1,10 +1,12 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const port = 4243;
+
 export default defineConfig({
   reporter: process.env.CI ? "html" : "dot",
 
   use: {
-    baseURL: "http://localhost:8080",
+    baseURL: `http://localhost:${port}`,
   },
   projects: [
     {
@@ -21,8 +23,8 @@ export default defineConfig({
   webServer: process.env.CI
     ? undefined
     : {
-        command: "npx http-server ./storybook-static",
-        url: "http://127.0.0.1:8080",
+        command: `npx http-server ./storybook-static -p ${port}`,
+        port,
         timeout: 120 * 1000,
         reuseExistingServer: !process.env.CI,
         stdout: "pipe",
