@@ -20,13 +20,11 @@ export default defineConfig({
       },
     },
   ],
-  webServer: process.env.CI
-    ? undefined
-    : {
-        command: `npx http-server ./storybook-static -p ${port}`,
-        port,
-        timeout: 120 * 1000,
-        reuseExistingServer: !process.env.CI,
-        stdout: "pipe",
-      },
+  webServer: {
+    command: `npx http-server ./storybook-static -p ${port}`,
+    port,
+    timeout: 120 * 1000,
+    reuseExistingServer: !process.env.CI,
+    stdout: "pipe",
+  },
 });
